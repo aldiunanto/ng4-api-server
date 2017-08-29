@@ -17,4 +17,5 @@ $app->get('/', function () use ($app) {
 
 $app->group(['prefix' => 'api'], function() use($app){
 	$app->get('employee', 'Employee@index');
+	$app->get('employee/show/{em_id}', 'Employee@show');
 });
