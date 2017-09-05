@@ -16,11 +16,10 @@ class Employee extends Controller {
     	return response()->json($row)->header('Access-Control-Allow-Origin', '*');
     }
     public function store(Request $req){
-    	$param = json_decode($req->input('params'));
     	Employees::create([
-    		'em_nik'	=> $param->em_nik,
-    		'em_name'	=> $param->em_name,
-    		'em_div'	=> $param->em_div
+    		'em_nik'	=> $req->json('em_nik'),
+    		'em_name'	=> $req->json('em_name'),
+    		'em_div'	=> $req->json('em_div')
     	]);
 
     	return response()->json(['created' => true])->header('Access-Control-Allow-Origin', '*');
@@ -28,6 +27,9 @@ class Employee extends Controller {
     public function isDuplicate($em_nik){
     	$count = Employees::where('em_nik', $em_nik)->count();
     	return response()->json(['count' => $count])->header('Access-Control-Allow-Origin', '*');
+    }
+    public function save(Request $req){
+    	return response()->json($req->json()->all())->header('Access-Control-Allow-Origin', '*');
     }
 
 }

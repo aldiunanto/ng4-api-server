@@ -21,4 +21,5 @@ $app->group(['prefix' => 'api'], function() use($app){
 	$app->get('employee/is-duplicate/{em_nik}', 'Employee@isDuplicate');
 
 	$app->post('employee/store', 'Employee@store');
+	$app->post('employee/save', 'Employee@save');
 });
