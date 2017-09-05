@@ -29,7 +29,13 @@ class Employee extends Controller {
     	return response()->json(['count' => $count])->header('Access-Control-Allow-Origin', '*');
     }
     public function save(Request $req){
-    	return response()->json($req->json()->all())->header('Access-Control-Allow-Origin', '*');
+    	$row = Employees::find($req->json('em_id'));
+
+    	$row->em_name 	= $req->json('em_name');
+    	$row->em_div	= $req->json('em_div');
+
+    	$row->save();
+    	return response()->json(['updated' => true])->header('Access-Control-Allow-Origin', '*');
     }
 
 }
