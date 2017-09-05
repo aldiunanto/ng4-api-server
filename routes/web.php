@@ -22,4 +22,6 @@ $app->group(['prefix' => 'api'], function() use($app){
 
 	$app->post('employee/store', 'Employee@store');
 	$app->post('employee/save', 'Employee@save');
+
+	$app->get('employee/destroy/{em_id}', 'Employee@destroy');
 });

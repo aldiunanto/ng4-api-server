@@ -37,5 +37,9 @@ class Employee extends Controller {
     	$row->save();
     	return response()->json(['updated' => true])->header('Access-Control-Allow-Origin', '*');
     }
+    public function destroy($em_id){
+    	Employees::destroy($em_id);
+    	return response()->json(['deleted' => true])->header('Access-Control-Allow-Origin', '*');
+    }
 
 }
