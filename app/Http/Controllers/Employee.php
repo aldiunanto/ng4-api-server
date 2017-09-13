@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 class Employee extends Controller {
 
     public function index($take = null){
+        $query = Employees::orderBy('created_at', 'DESC');
 		$fetch = (! is_null($take)
-            ? Employees::take($take)->get()
-            : Employees::orderBy('created_at', 'DESC')->get()
+            ? $query->take($take)->get()
+            : $query->get()
         );
         
     	return response()->json($fetch)->header('Access-Control-Allow-Origin', '*');
