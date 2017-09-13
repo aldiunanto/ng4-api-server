@@ -16,7 +16,7 @@ $app->get('/', function () use ($app) {
 });
 
 $app->group(['prefix' => 'api'], function() use($app){
-	$app->get('employee', 'Employee@index');
+	$app->get('employee[/{take}]', 'Employee@index');
 	$app->get('employee/show/{em_id}', 'Employee@show');
 	$app->get('employee/is-duplicate/{em_nik}', 'Employee@isDuplicate');
 
