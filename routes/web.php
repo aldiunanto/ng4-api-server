@@ -24,4 +24,7 @@ $app->group(['prefix' => 'api'], function() use($app){
 	$app->post('employee/save', 'Employee@save');
 
 	$app->get('employee/destroy/{em_id}', 'Employee@destroy');
+
+/*----------------------------------- AUTH --------------------------------------------*/
+	$app->post('auth/login', 'Auth@login');
 });
